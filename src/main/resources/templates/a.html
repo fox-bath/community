@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!--访问该页面时,在此处生成CSRF令牌.-->
+        <!--<meta name="_csrf" th:content="${_csrf.token}">-->
+        <!--<meta name="_csrf_header" th:content="${_csrf.headerName}">-->
+        <link rel="icon" th:href="@{/img/icon.png}"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+        <link rel="stylesheet" th:href="@{/css/global.css}" />
+        <title>首页</title>
+</head>
+<body>
+<div class="main">
+
+    <!-- 帖子列表 map代表一个帖子 -->
+    <ul class="list-unstyled" th:each="l:${discussPosts}">
+        <li class="media pb-3 pt-3 mb-3 border-bottom" >
+            <a th:href="@{|/user/profile/${l.post.id}|}">
+                <img th:src="${l.user.headerUrl}" class="mr-4 rounded-circle" alt="用户头像" style="width:50px;height:50px;">
+            </a>
+            <h6 class="mt-0 mb-3">
+                <!--如果跳转路径有变量，要加上||。注意取变量是用$-->
+                <a th:href="@{#}" th:utext="${l.post.title}">备战春招，面试刷题跟他复习，一个月全搞定！</a>
+                <span class="badge badge-secondary bg-primary" th:if="${l.post.type==1}">置顶</span>
+                <span class="badge badge-secondary bg-danger" th:if="${l.post.status==1}">精华</span>
+            </h6>
+            <div class="text-muted font-size-12">
+                <u class="mr-3" th:utext="${l.user.username}">寒江雪</u> 发布于 <b th:text="${#dates.format(l.post.createTime,'yyyy-MM-dd HH:mm:ss')}">2019-04-15 15:32:18</b>
+
+            </div>
+        </li>
+    </ul>
+
+
+</div>
+</body>
+</html>
