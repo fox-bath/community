@@ -57,6 +57,7 @@
 						</div>
 						<div class="col-sm-4">
 							<img th:src="@{/kaptcha}" id="kaptcha" style="width:100px;height:40px;" class="mr-2"/>
+							<!--点击链接调用js方法-->
 							<a href="javascript:refresh_kaptcha();" class="font-size-12 align-bottom ">刷新验证码</a>
 						</div>
 					</div>				
@@ -93,6 +94,7 @@
             var path = CONTEXT_PATH + "/kaptcha?p=" + Math.random();
             $("#kaptcha").attr("src", path);
         }
+
 	</script>
 </body>
 </html>
