@@ -1,5 +1,6 @@
 package com.college.community.controller;
 
+import com.college.community.annotation.LoginRequired;
 import com.college.community.entity.User;
 import com.college.community.service.UserService;
 import com.college.community.util.CommunityUtil;
@@ -48,6 +49,7 @@ public class UserController {
     private HostHolder hostHolder;
 
     //跳转到设置页面
+    @LoginRequired
     @RequestMapping(value = "/setting",method = RequestMethod.GET)
     public String getSettingPage(){
         return "/site/setting";
@@ -55,6 +57,7 @@ public class UserController {
 
     //上传图片
     //MultipartFile是MVC提供的对象，前端传几个值，就设置几个MultipartFile形参
+    @LoginRequired
     @RequestMapping(value = "/upload",method = RequestMethod.POST)
     public String uploadHeader(MultipartFile headerImage, Model model){
         if (headerImage==null){

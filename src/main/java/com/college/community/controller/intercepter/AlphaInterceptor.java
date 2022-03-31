@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 
 @Component
-public class AlphaIntercepter implements HandlerInterceptor {
+public class AlphaInterceptor implements HandlerInterceptor {
 
-    private static final Logger logger=LoggerFactory.getLogger(AlphaIntercepter.class);
+    private static final Logger logger=LoggerFactory.getLogger(AlphaInterceptor.class);
 
     //在Controller之前执行
     @Override
